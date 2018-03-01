@@ -4,17 +4,22 @@ import java.awt.*;
 
 public class Ride {
 
+    private int id;
     private int timeStart;
     private int timeEnd;
     private Point pointStart;
     private Point pointEnd;
 
-    public Ride(int timeStart,int timeEnd,Point pointStart,Point pointEnd)
+    public Ride(int id,int timeStart,int timeEnd,Point pointStart,Point pointEnd)
     {
+        this.id = id;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
         this.pointStart = pointStart;
         this.pointEnd = pointEnd;
+    }
+    public int getId() {
+        return id;
     }
     public int getTimeStart() {
         return timeStart;
