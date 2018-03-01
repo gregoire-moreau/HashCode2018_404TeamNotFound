@@ -47,9 +47,10 @@ public class Ride implements Comparable<Ride>{
 
     @Override
     public int compareTo(Ride o) {
-        if((this.timeEnd - o.timeEnd) == 0)
+        return (this.timeStart + this.length) - (o.timeStart + o.length);
+        /*if((this.timeEnd - o.timeEnd) == 0)
             return this.timeStart - o.timeStart;
         else
-            return this.timeEnd - o.timeEnd;
+            return this.timeEnd - o.timeEnd;*/
     }
 }
