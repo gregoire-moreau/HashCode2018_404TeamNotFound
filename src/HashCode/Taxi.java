@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Taxi {
 
-    private static int newid = -1;
+    private static int newid = 0;
 
     public ArrayList<Ride> done;
     public Point position;
