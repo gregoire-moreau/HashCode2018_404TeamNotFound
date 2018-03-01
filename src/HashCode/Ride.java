@@ -10,7 +10,7 @@ public class Ride implements Comparable<Ride>{
     private Point pointStart;
     private Point pointEnd;
 
-    public Ride(int id,int timeStart,int timeEnd,Point pointStart,Point pointEnd)
+    public Ride(int id,Point pointStart,Point pointEnd,int timeStart,int timeEnd)
     {
         this.id = id;
         this.timeStart = timeStart;
