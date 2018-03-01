@@ -1,5 +1,6 @@
 package HashCode;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class Main {
@@ -18,7 +19,27 @@ public class Main {
     public static void main(String[] args)
     {
         IO.read(args[0]);
+        Collections.sort(listOfRides);
 
-        IO.write();
+        for(int i= 0; i<numOfSteps; i++){
+            while(!listOfRides.isEmpty() && listOfRides.peek().getTimeLimit()<=i)
+                listOfRides.poll();
+
+            for(Taxi t : listOfTaxis)
+            {
+                if(t.isFree(i))
+                {
+                    for(Ride r: listOfRides){
+                        if(t.isAccessible(r)){
+                            t.takeRide(r);
+                            listOfRides.remove(r);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        IO.write(args[0]);
     }
 }

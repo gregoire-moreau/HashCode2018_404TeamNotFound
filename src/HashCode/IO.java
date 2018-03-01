@@ -2,8 +2,7 @@ package HashCode;
 
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,7 +12,7 @@ public class IO {
     public static void read(String in)
     {
         try {
-            Scanner scanner = new Scanner(new File(in));
+            Scanner scanner = new Scanner(new File(in+".in"));
             Main.numOfRows = scanner.nextInt();
             Main.numOfCols = scanner.nextInt();
             Main.numOfTaxis = scanner.nextInt();
@@ -43,19 +42,21 @@ public class IO {
     }
 
 
-    public static void write()
+    public static void write(String in)
     {
-        for(Taxi e: Main.listOfTaxis)
-        {
-            if (!e.done.isEmpty())
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter(in+".out"));
+            for(Taxi e: Main.listOfTaxis)
             {
-                System.out.print(e.id);
+                writer.print(e.done.size());
                 for(Ride x : e.done)
                 {
-                    System.out.print(" "+x.getId());
+                    writer.print(" "+x.getId());
                 }
-                System.out.println();
+                writer.println();
             }
+            writer.close();
         }
+        catch (IOException e){}
     }
 }
