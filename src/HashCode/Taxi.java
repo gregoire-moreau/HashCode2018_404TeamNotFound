@@ -1,7 +1,5 @@
 package HashCode;
 
-import sun.awt.image.ImageWatched;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;

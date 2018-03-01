@@ -23,7 +23,6 @@ public class Main {
         Collections.sort(listOfRides);
 
         for(int i= 0; i<numOfSteps; i++){
-            System.out.print(i + "\r");
             while(!listOfRides.isEmpty() && listOfRides.peek().getTimeLimit()<=i)
                 listOfRides.poll();
 
