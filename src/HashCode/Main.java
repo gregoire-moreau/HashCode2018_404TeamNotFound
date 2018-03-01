@@ -1,5 +1,6 @@
 package HashCode;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -22,6 +23,7 @@ public class Main {
         Collections.sort(listOfRides);
 
         for(int i= 0; i<numOfSteps; i++){
+            System.out.print(i + "\r");
             while(!listOfRides.isEmpty() && listOfRides.peek().getTimeLimit()<=i)
                 listOfRides.poll();
 
@@ -29,13 +31,18 @@ public class Main {
             {
                 if(t.isFree(i))
                 {
-                    for(Ride r: listOfRides){
+                    Ride ride = t.getCloserRide(listOfRides);
+                    if(ride != null) {
+                        t.takeRide(ride);
+                        listOfRides.remove(ride);
+                    }
+                    /*for(Ride r: listOfRides){
                         if(t.isAccessible(r)){
                             t.takeRide(r);
                             listOfRides.remove(r);
                             break;
                         }
-                    }
+                    }*/
                 }
             }
         }

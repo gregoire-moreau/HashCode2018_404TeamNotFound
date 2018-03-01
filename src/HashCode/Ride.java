@@ -2,7 +2,9 @@ package HashCode;
 
 import java.awt.*;
 
-public class Ride implements Comparable<Ride>{
+public class Ride implements Comparable<Ride> {
+
+    public static Ride currentRide = null;
 
     private int id;
     private int timeStart;

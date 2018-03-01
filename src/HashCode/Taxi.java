@@ -1,9 +1,12 @@
 package HashCode;
 
+import sun.awt.image.ImageWatched;
+
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class Taxi {
+public class Taxi  {
 
     private static int newid = 0;
 
@@ -46,5 +49,18 @@ public class Taxi {
         int leaveTime = Math.max(arriveTime, ride.getTimeStart());
         int finishTime = leaveTime + timeBetween(ride.getPointStart(), ride.getPointEnd());
         return finishTime <= ride.getTimeEnd();
+    }
+
+    public Ride getCloserRide(LinkedList<Ride> rides) {
+        Ride closer = null;
+        for(Ride ride : rides) {
+            if(closer == null && isAccessible(ride)) closer = ride;
+            else if(closer != null && howSoon(closer) > howSoon(ride) && isAccessible(ride)) closer = ride;
+        }
+        return closer;
+    }
+
+    private int howSoon(Ride ride) {
+        return Math.max(freeOn + timeToPoint(ride.getPointStart()), ride.getTimeStart());
     }
 }
