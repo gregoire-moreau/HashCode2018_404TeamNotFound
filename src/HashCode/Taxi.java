@@ -10,7 +10,7 @@ public class Taxi {
     public ArrayList<Ride> done;
     public Point position;
     int freeOn;
-    int id;
+    public int id;
 
     Taxi() {
         position = new Point(0, 0);
@@ -35,7 +35,7 @@ public class Taxi {
     public void takeRide(Ride ride) {
         done.add(ride);
         freeOn += timeToPoint(ride.getPointStart());
-        freeOn = Math.min(freeOn, ride.getTimeStart());
+        freeOn = Math.max(freeOn, ride.getTimeStart());
         position = ride.getPointStart();
         freeOn += timeToPoint(ride.getPointEnd());
         position = ride.getPointEnd();
@@ -43,7 +43,7 @@ public class Taxi {
 
     public boolean isAccessible(Ride ride) {
         int arriveTime = freeOn + timeToPoint(ride.getPointStart());
-        int leaveTime = Math.min(arriveTime, ride.getTimeStart());
+        int leaveTime = Math.max(arriveTime, ride.getTimeStart());
         int finishTime = leaveTime + timeBetween(ride.getPointStart(), ride.getPointEnd());
         return finishTime <= ride.getTimeEnd();
     }
