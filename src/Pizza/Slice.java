@@ -1,3 +1,5 @@
+package Pizza;
+
 import java.awt.*;
 
 public class Slice {
